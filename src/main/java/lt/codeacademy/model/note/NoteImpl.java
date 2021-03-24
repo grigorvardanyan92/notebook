@@ -1,15 +1,17 @@
 package lt.codeacademy.model.note;
 
-import lt.codeacademy.model.note.Note;
+import java.time.LocalDate;
 
 /*
 * Represents a single note
 * */
 public abstract class NoteImpl implements Note {
+
     private static int idCounter = 0;
-    private int id;
+    private final int id;
     private String text;
     private boolean completed = false;
+    private final LocalDate date = LocalDate.now();
 
     public NoteImpl(String text) {
         this.text = text;
