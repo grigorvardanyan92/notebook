@@ -42,4 +42,13 @@ public abstract class NoteImpl implements Note {
     public boolean isCompleted() {
         return completed;
     }
+
+    @Override
+    public String toString() {
+        String beginningOfText = text;
+        if (beginningOfText.length() > 37) {
+            beginningOfText = beginningOfText.substring(0, 37) + "...";
+        }
+        return String.format("%4d   %-40s   %s\n", id, beginningOfText, date);
+    }
 }
