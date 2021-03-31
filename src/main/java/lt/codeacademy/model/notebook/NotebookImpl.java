@@ -2,12 +2,13 @@ package lt.codeacademy.model.notebook;
 
 import lt.codeacademy.model.note.*;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class NotebookImpl implements Notebook {
+public class NotebookImpl implements Notebook, Serializable {
     private Map<Integer, Note> notes = new HashMap<>();
 
     @Override

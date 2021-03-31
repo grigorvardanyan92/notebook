@@ -2,12 +2,13 @@ package lt.codeacademy.model.note;
 
 import lt.codeacademy.model.note.Note;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /*
 * Represents a single note
 * */
-public abstract class NoteImpl implements Note {
+public abstract class NoteImpl implements Note, Serializable {
 
     private static int idCounter = 0;
     private final int id;
