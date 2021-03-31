@@ -1,5 +1,7 @@
 package lt.codeacademy.model.note;
 
+import lt.codeacademy.model.note.Note;
+
 import java.time.LocalDate;
 
 /*
@@ -43,12 +45,15 @@ public abstract class NoteImpl implements Note {
         return completed;
     }
 
+    /*
+    * Creates text in format "id   part of text...    date"
+    * */
     @Override
     public String toString() {
         String beginningOfText = text;
         if (beginningOfText.length() > 37) {
             beginningOfText = beginningOfText.substring(0, 37) + "...";
         }
-        return String.format("%4d   %-40s   %s\n", id, beginningOfText, date);
+        return String.format("%4d   %-40s   %s", id, beginningOfText, date);
     }
 }

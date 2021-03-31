@@ -10,12 +10,16 @@ public class App
 {
     public static void main( String[] args )
     {
-        Note note = new PersonalNote("tekstukas testkfa fa d   adfadfasdfadf adfasdfaf");
+        Note note = new PersonalNote("tekstukas testkfa fa d adfadfasdfadf adfasdfaf");
         Note note2 = new StudiesNote("kitas");
         Notebook notebook = new NotebookImpl();
+        NotebookInterface notebookInterface = new NotebookInterface(notebook);
+
         notebook.addNote(note);
         notebook.addNote(note2);
 
-        System.out.println(notebook.getPersonalNotes());
+        System.out.println(notebookInterface.uncompletedNotes());
+        System.out.println(notebook.getCompletedNotes());
+
     }
 }

@@ -1,9 +1,6 @@
 package lt.codeacademy.model.notebook;
 
-import lt.codeacademy.model.note.Note;
-import lt.codeacademy.model.note.PersonalNote;
-import lt.codeacademy.model.note.StudiesNote;
-import lt.codeacademy.model.note.WorkNote;
+import lt.codeacademy.model.note.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +8,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class NotebookImpl implements Notebook {
-
     private Map<Integer, Note> notes = new HashMap<>();
 
     @Override
