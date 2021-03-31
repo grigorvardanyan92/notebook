@@ -14,17 +14,15 @@ public class App
 {
     public static void main( String[] args )
     {
-        Note note = new PersonalNote("tekstukas testkfa fa d adfadfasdfadf adfasdfaf");
-        Note note2 = new StudiesNote("kitas");
-
+        File file = new File("notebook.bin");
+        FileService fileService = new FileServiceImpl();
         Notebook notebook = new NotebookImpl();
         NotebookInterface notebookInterface = new NotebookInterface(notebook);
 
-        File file = new File("notebook.bin");
-        FileService fileService = new FileServiceImpl();
+        Note note = new StudiesNote("some text", notebook.giveId());
+
 
         notebook.addNote(note);
-        notebook.addNote(note2);
 
         fileService.writeNotebook(notebook, file);
         Notebook notebook1 = fileService.readNotebook(file);

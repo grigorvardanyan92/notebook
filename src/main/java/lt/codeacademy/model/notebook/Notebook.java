@@ -14,4 +14,5 @@ public interface Notebook {
     List<Note> getStudiesNotes();
     List<Note> getWorkNotes();
     List<Note> getCompletedNotes();
+    int giveId();
 }

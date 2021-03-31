@@ -1,6 +1,7 @@
 package lt.codeacademy.model.notebook;
 
 import lt.codeacademy.model.note.*;
+import lt.codeacademy.service.IdCounter;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -8,8 +9,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/*
+* Represents set of notes
+* */
 public class NotebookImpl implements Notebook, Serializable {
     private Map<Integer, Note> notes = new HashMap<>();
+    private IdCounter idCounter = new IdCounter();
 
     @Override
     public void addNote(Note note) {
@@ -59,5 +64,10 @@ public class NotebookImpl implements Notebook, Serializable {
         return notes.values().stream()
                 .filter(n -> n.isCompleted())
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public int giveId() {
+        return idCounter.getCounter();
     }
 }

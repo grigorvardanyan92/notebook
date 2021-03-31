@@ -5,6 +5,9 @@ import lt.codeacademy.model.notebook.NotebookImpl;
 
 import java.util.stream.Collectors;
 
+/*
+* Class that returns Notebook lists as strings for convenient reading
+* */
 public class NotebookInterface {
     private Notebook notebook;
     private final String LIST_HEADER = "  ID                   NOTE                          DATE\n";
