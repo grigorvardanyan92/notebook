@@ -47,17 +47,20 @@ public class NotebookInterface {
     }
 
     public String readNote(int id) {
-        String original = notebook.getNote(id).getText();
-        String result = original;
+        String result = notebook.getNote(id).getText();
+
+        // remove miltiple consecutive spaces
+        result = result.replaceAll(" +", " ");
 
         // breaks into lines at spaces after 50th char on each line
         int charCounter = 0;
-        for (int i = 0; i < original.length(); i++) {
+        for (int i = 0; i < result.length(); i++) {
             charCounter++;
-            if (charCounter > 50 && original.charAt(i) == ' ') {
+            if (charCounter > 50 && result.charAt(i) == ' ') {
                 charCounter = 0;
-                result = result.substring(0, i) + result.substring(i + 1);
+                result = result.substring(0, i) + '\n' + result.substring(i + 1);
             }
         }
+        return result;
     }
 }
