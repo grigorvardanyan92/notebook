@@ -1,6 +1,8 @@
 package lt.codeacademy.service;
 
-public class IdCounter {
+import java.io.Serializable;
+
+public class IdCounter implements Serializable {
     private int counter = 0;
 
     public int getCounter() {

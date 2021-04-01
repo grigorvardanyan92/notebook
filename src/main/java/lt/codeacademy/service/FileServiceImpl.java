@@ -7,8 +7,14 @@ import java.io.*;
 import java.util.List;
 
 public class FileServiceImpl implements FileService {
+    File file;
+
+    public FileServiceImpl(File file) {
+        this.file = file;
+    }
+
     @Override
-    public void writeNotebook(Notebook notebook, File file) {
+    public void writeNotebook(Notebook notebook) {
         try {
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream ous = new ObjectOutputStream(fos);
@@ -26,7 +32,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public Notebook readNotebook(File file) {
+    public Notebook readNotebook() {
         Notebook notebook = null;
         try {
             FileInputStream fis = new FileInputStream(file);

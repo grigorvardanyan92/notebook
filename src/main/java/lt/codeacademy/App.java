@@ -15,18 +15,13 @@ public class App
     public static void main( String[] args )
     {
         File file = new File("notebook.bin");
-        FileService fileService = new FileServiceImpl();
-        Notebook notebook = new NotebookImpl();
+        FileService fileService = new FileServiceImpl(file);
+        Notebook notebook = fileService.readNotebook();
         NotebookInterface notebookInterface = new NotebookInterface(notebook);
 
-        Note note = new StudiesNote("some text", notebook.giveId());
-
-
+        Note note = new StudiesNote("some another text", notebook.giveId());
         notebook.addNote(note);
 
-        fileService.writeNotebook(notebook, file);
-        Notebook notebook1 = fileService.readNotebook(file);
-
-        System.out.println(notebook1.getUncompletedNotes());
+        System.out.println(notebookInterface.uncompletedNotes());
     }
 }

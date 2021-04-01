@@ -5,6 +5,6 @@ import lt.codeacademy.model.notebook.Notebook;
 import java.io.File;
 
 public interface FileService {
-    void writeNotebook(Notebook notebook, File file);
-    Notebook readNotebook(File file);
+    void writeNotebook(Notebook notebook);
+    Notebook readNotebook();
 }
