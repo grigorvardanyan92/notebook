@@ -16,12 +16,20 @@ public class App
     {
         File file = new File("notebook.bin");
         FileService fileService = new FileServiceImpl(file);
-        Notebook notebook = new NotebookImpl();
+
+        Notebook notebook = fileService.readNotebook();
         NotebookInterface notebookInterface = new NotebookInterface(notebook);
 
-        Note note = new StudiesNote("some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla some another text bla bla bla ", notebook.giveId());
+        Note note = new StudiesNote("Your text here", notebook.giveId());
         notebook.addNote(note);
+        notebook.deleteNote(0);
+
+        notebook.getNote(0).setText("new text");
+        notebook.getNote(0).setCompleted(true);
 
         System.out.println(notebookInterface.readNote(0));
+        System.out.println(notebookInterface.uncompletedNotes());
+
+        fileService.writeNotebook(notebook);
     }
 }
