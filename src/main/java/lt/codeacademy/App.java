@@ -22,13 +22,6 @@ public class App
 
         Note note = new StudiesNote("Your text here", notebook.giveId());
         notebook.addNote(note);
-        notebook.deleteNote(0);
-
-        notebook.getNote(0).setText("new text");
-        notebook.getNote(0).setCompleted(true);
-
-        System.out.println(notebookInterface.readNote(0));
-        System.out.println(notebookInterface.uncompletedNotes());
 
         fileService.writeNotebook(notebook);
     }

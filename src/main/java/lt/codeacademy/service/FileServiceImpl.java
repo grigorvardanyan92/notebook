@@ -15,15 +15,9 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void writeNotebook(Notebook notebook) {
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            ObjectOutputStream ous = new ObjectOutputStream(fos);
-
+        try (FileOutputStream fos = new FileOutputStream(file);
+             ObjectOutputStream ous = new ObjectOutputStream(fos)) {
             ous.writeObject(notebook);
-
-            ous.close();
-            fos.close();
-
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
         } catch (IOException e) {
@@ -34,15 +28,9 @@ public class FileServiceImpl implements FileService {
     @Override
     public Notebook readNotebook() {
         Notebook notebook = null;
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-
+        try (FileInputStream fis = new FileInputStream(file);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
             notebook = (Notebook) ois.readObject();
-
-            ois.close();
-            fis.close();
-
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
         } catch (IOException e) {
@@ -50,7 +38,6 @@ public class FileServiceImpl implements FileService {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         return notebook;
     }
 }
