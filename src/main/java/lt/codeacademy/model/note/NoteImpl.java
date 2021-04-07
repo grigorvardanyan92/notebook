@@ -1,7 +1,5 @@
 package lt.codeacademy.model.note;
 
-import lt.codeacademy.model.note.Note;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 

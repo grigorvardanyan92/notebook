@@ -6,7 +6,7 @@ import lt.codeacademy.model.notebook.Notebook;
 import lt.codeacademy.model.notebook.NotebookImpl;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NotebookInterfaceTest {
     @Test

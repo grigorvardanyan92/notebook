@@ -1,10 +1,8 @@
 package lt.codeacademy.service;
 
-import lt.codeacademy.model.note.Note;
 import lt.codeacademy.model.notebook.Notebook;
 
 import java.io.*;
-import java.util.List;
 
 public class FileServiceImpl implements FileService {
     File file;

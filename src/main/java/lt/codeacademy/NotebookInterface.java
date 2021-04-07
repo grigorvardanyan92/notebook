@@ -1,7 +1,6 @@
 package lt.codeacademy;
 
 import lt.codeacademy.model.notebook.Notebook;
-import lt.codeacademy.model.notebook.NotebookImpl;
 
 import java.util.stream.Collectors;
 
