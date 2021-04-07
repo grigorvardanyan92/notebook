@@ -23,7 +23,7 @@ or WorkNote and then add it to notebook:
 `notebook.addNote(note);`
 
 Deleting note:  
-`notebook.deleteNote(0);    // need note id`
+`notebookInterface.deleteNote(0);    // need note id`
 
 Updating note text:  
 `notebook.getNote(0).setText("new text");   // need note id`

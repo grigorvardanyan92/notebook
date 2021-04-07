@@ -1,5 +1,6 @@
 package lt.codeacademy.model.notebook;
 
+import lt.codeacademy.exception.NoSuchIDException;
 import lt.codeacademy.model.note.Note;
 import lt.codeacademy.model.note.PersonalNote;
 import lt.codeacademy.model.note.StudiesNote;
@@ -29,8 +30,12 @@ public class NotebookImpl implements Notebook, Serializable {
     }
 
     @Override
-    public void deleteNote(int id) {
-        notes.remove(id);
+    public void deleteNote(int id) throws NoSuchIDException {
+        if (notes.keySet().contains(id)) {
+            notes.remove(id);
+        } else {
+            throw new NoSuchIDException();
+        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package lt.codeacademy;
 
+import lt.codeacademy.exception.NoSuchIDException;
 import lt.codeacademy.model.notebook.Notebook;
 
 import java.util.stream.Collectors;
@@ -11,8 +12,17 @@ public class NotebookInterface {
     private Notebook notebook;
     private final String LIST_HEADER = "  ID   NOTE                                       DATE\n";
 
+    // constructor
     public NotebookInterface(Notebook notebook) {
         this.notebook = notebook;
+    }
+
+    public void deleteNote(int id) {
+        try {
+            notebook.deleteNote(id);
+        } catch (NoSuchIDException e) {
+            System.out.println("no such id");
+        }
     }
 
     public String uncompletedNotes() {
