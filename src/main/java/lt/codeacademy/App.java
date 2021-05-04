@@ -10,20 +10,25 @@ import lt.codeacademy.model.notebook.Notebook;
 import lt.codeacademy.model.notebook.NotebookImpl;
 import lt.codeacademy.service.FileService;
 import lt.codeacademy.service.FileServiceImpl;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import java.io.File;
 
 public class App
 {
     public static void main( String[] args ) throws JsonProcessingException {
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
         // work with file
-        File file = new File("notebook.bin");
-        FileService fileService = new FileServiceImpl(file);
+//        File file = new File("notebook.bin");
+//        FileService fileService = new FileServiceImpl(file);
 
         // notebook class
-        Notebook notebook = new NotebookImpl();
+//        Notebook notebook = new NotebookImpl();
 //        Notebook notebook = fileService.readNotebook();
-        NotebookInterface notebookInterface = new NotebookInterface(notebook);
+//        NotebookInterface notebookInterface = new NotebookInterface(notebook);
 
         // add notes
 //        Note note1 = new StudiesNote("Study Java", notebook.giveId());
