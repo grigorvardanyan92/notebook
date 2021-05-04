@@ -2,15 +2,18 @@ package lt.codeacademy.model.note;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /*
 * Represents a single note
 * */
-public abstract class NoteImpl implements Note, Serializable {
+public class NoteImpl implements Note, Serializable {
+    private final String category;
     private final int id;
     private String text;
-    private boolean completed = false;
-    private final LocalDate date = LocalDate.now();
+    private boolean completed;
+    private final LocalDateTime created;
+    private LocalDateTime updated;
 
     // constructor
     public NoteImpl(String text, int id) {
