@@ -1,20 +1,9 @@
 package lt.codeacademy;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import lt.codeacademy.model.note.Note;
-import lt.codeacademy.model.note.PersonalNote;
-import lt.codeacademy.model.note.StudiesNote;
-import lt.codeacademy.model.notebook.Notebook;
-import lt.codeacademy.model.notebook.NotebookImpl;
-import lt.codeacademy.service.FileService;
-import lt.codeacademy.service.FileServiceImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import java.io.File;
 
 public class App
 {

@@ -1,7 +1,7 @@
-package lt.codeacademy.model.notebook;
+package lt.codeacademy.model;
 
 import lt.codeacademy.exception.NoSuchIDException;
-import lt.codeacademy.model.note.Note;
+import lt.codeacademy.model.Note;
 
 import java.util.List;
 

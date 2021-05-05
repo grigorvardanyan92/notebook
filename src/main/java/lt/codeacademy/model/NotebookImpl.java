@@ -1,12 +1,9 @@
-package lt.codeacademy.model.notebook;
+package lt.codeacademy.model;
 
 import lt.codeacademy.exception.NoSuchIDException;
-import lt.codeacademy.model.note.Note;
-import lt.codeacademy.model.note.PersonalNote;
-import lt.codeacademy.model.note.StudiesNote;
-import lt.codeacademy.model.note.WorkNote;
+import lt.codeacademy.model.Note;
+import lt.codeacademy.model.Notebook;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +12,7 @@ import java.util.stream.Collectors;
 /*
 * Represents set of notes
 * */
-public class NotebookImpl implements Notebook, Serializable {
+public class NotebookImpl implements Notebook {
     private Map<Integer, Note> notes = new HashMap<>();
     private int idCounter = 0;
 
@@ -48,21 +45,21 @@ public class NotebookImpl implements Notebook, Serializable {
     @Override
     public List<Note> getPersonalNotes() {
         return notes.values().stream()
-                .filter(n -> n instanceof PersonalNote)
+                .filter(n -> n.getCategory().equals("personal"))
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Note> getStudiesNotes() {
         return notes.values().stream()
-                .filter(n -> n instanceof StudiesNote)
+                .filter(n -> n.getCategory().equals("study"))
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Note> getWorkNotes() {
         return notes.values().stream()
-                .filter(n -> n instanceof WorkNote)
+                .filter(n -> n.getCategory().equals("work"))
                 .collect(Collectors.toList());
     }
 
