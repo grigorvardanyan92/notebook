@@ -56,6 +56,13 @@ public class NotebookInterface {
                 .collect(Collectors.joining("\n"));
     }
 
+    /**
+     * Returns text of a note in a pleasant format for reading,
+     * breaking lines after each 50th char.
+     *
+     * @param note whose text needs to be returned
+     * @return string with new lines
+     */
     public static String readNote(Note note) {
         String result = note.getText();
         // replaces multiple spaces with one
