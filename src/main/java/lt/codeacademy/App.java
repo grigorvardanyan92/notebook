@@ -1,6 +1,7 @@
 package lt.codeacademy;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import lt.codeacademy.model.Note;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -8,11 +9,12 @@ import org.hibernate.cfg.Configuration;
 public class App
 {
     public static void main( String[] args ) throws JsonProcessingException {
+
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
-        // work with file
-//        File file = new File("notebook.bin");
-//        FileService fileService = new FileServiceImpl(file);
+        Note note = new Note("work", "hi");
+        System.out.println(note.getId());
+        Note note2 = (Note) session.save(note);
 
         // notebook class
 //        Notebook notebook = new NotebookImpl();
@@ -33,7 +35,5 @@ public class App
 //        System.out.println(notebookInterface.personalNotes());
 //        System.out.println(notebookInterface.studiesNotes());
 
-        // save to file
-//        fileService.writeNotebook(notebook);
     }
 }

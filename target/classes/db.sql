@@ -6,3 +6,5 @@ create table note
     completed bool default false,
     deleted   bool default false
 );
+
+insert into note (category, text) values ('work', 'some text')

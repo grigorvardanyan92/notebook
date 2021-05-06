@@ -24,6 +24,10 @@
             1234
         </property>
 
+        <property name = "hibernate.connection.autocommit">
+            true
+        </property>
+
         <mapping class="lt.codeacademy.model.Note" />
 
     </session-factory>

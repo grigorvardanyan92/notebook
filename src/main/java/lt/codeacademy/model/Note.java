@@ -1,18 +1,26 @@
 package lt.codeacademy.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity(name = "note")
+@Entity
+@Table(name = "note")
 public class Note {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String category;
     private String text;
     private boolean completed;
     private boolean deleted;
+
+    public Note() {
+    }
+
+    public Note(String category, String text) {
+        this.category = category;
+        this.text = text;
+    }
 
     public int getId() {
         return id;
