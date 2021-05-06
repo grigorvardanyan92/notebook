@@ -1,6 +1,7 @@
 package lt.codeacademy;
 
 import lt.codeacademy.exception.NoSuchIDException;
+import lt.codeacademy.model.Note;
 import lt.codeacademy.model.Notebook;
 
 import java.util.stream.Collectors;
@@ -55,12 +56,10 @@ public class NotebookInterface {
                 .collect(Collectors.joining("\n"));
     }
 
-    public String readNote(int id) {
-        String result = notebook.getNote(id).getText();
-
-        // remove miltiple consecutive spaces
+    public static String readNote(Note note) {
+        String result = note.getText();
+        // replaces multiple spaces with one
         result = result.replaceAll(" +", " ");
-
         // breaks into lines at spaces after 50th char on each line
         int charCounter = 0;
         for (int i = 0; i < result.length(); i++) {
