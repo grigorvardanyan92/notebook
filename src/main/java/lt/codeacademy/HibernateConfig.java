@@ -6,9 +6,19 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateConfig {
 
-    private static final Configuration config = new Configuration().configure();
+    private static final Configuration configuration = new Configuration().configure();
 
-    public static Session getSession() {
-        return config.buildSessionFactory().openSession();
+    private static SessionFactory factory;
+
+    public static Session openSession() {
+        return factory.openSession();
+    }
+
+    public static void buildSessionFactory() {
+        factory = configuration.buildSessionFactory();
+    }
+
+    public static void closeSessionFactory() {
+        factory.close();
     }
 }
