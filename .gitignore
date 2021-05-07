@@ -1,3 +1,6 @@
+target
 .idea
-maven-notebook.iml
-notebook.bin
+*.iws
+*.iml
+*.ipr
+out/

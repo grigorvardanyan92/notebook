@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 * Represents set of notes
 * */
 public class NotebookImpl implements Notebook {
+
     private Map<Integer, Note> notes = new HashMap<>();
     private int idCounter = 0;
 
@@ -70,7 +71,6 @@ public class NotebookImpl implements Notebook {
                 .collect(Collectors.toList());
     }
 
-    @Override
     public int giveId() {
         return idCounter++;
     }
