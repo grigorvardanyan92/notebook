@@ -10,7 +10,11 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+
     public String name;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Note> notes;
 
     public Category() {
     }
@@ -18,9 +22,6 @@ public class Category {
     public Category(String name) {
         this.name = name;
     }
-
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Note> notes;
 
     public int getId() {
         return id;

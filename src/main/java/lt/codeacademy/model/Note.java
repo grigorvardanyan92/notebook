@@ -9,22 +9,22 @@ public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int categoryId;
+
     private String text;
     private boolean completed;
     private boolean deleted;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     public Note() {
     }
 
-    public Note(int categoryId, String text) {
-        this.categoryId = categoryId;
+    public Note(String text, Category category) {
         this.text = text;
+        this.category = category;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "cagegory_id")
-    private Category category;
 
     public int getId() {
         return id;
@@ -32,14 +32,6 @@ public class Note {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getText() {
@@ -64,6 +56,14 @@ public class Note {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String toString() {

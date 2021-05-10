@@ -37,6 +37,7 @@
         </property>
 
         <mapping class="lt.codeacademy.model.Note" />
+        <mapping class="lt.codeacademy.model.Category" />
 
     </session-factory>
 </hibernate-configuration>
