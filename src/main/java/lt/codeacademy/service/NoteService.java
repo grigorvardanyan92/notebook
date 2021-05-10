@@ -75,7 +75,9 @@ public class NoteService {
         List<Note> notes = new ArrayList<>();
 
         try {
-            Query<Note> query = session.createQuery(String.format("FROM Movie WHERE %s = :%s", col, col), Note.class);
+            Query<Note> query = session.createQuery(String.format(
+                    "FROM Note WHERE %s = :%s", col, col), Note.class
+            );
             query.setParameter(col, val);
 
             if (limitOne) {

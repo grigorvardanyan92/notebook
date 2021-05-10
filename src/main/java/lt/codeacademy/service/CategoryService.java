@@ -1,7 +1,7 @@
 package lt.codeacademy.service;
 
 import lt.codeacademy.HibernateConfig;
-import lt.codeacademy.model.Note;
+import lt.codeacademy.model.Category;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -11,22 +11,22 @@ import java.util.List;
 
 public class CategoryService {
 
-    public List<Note> getAll(String key, Object value) {
+    public List<Category> getAll(String key, Object value) {
         return getAll(key, value, false);
     }
 
-    public Note getById(Long id) {
-        List<Note> notes = getAll("id", id, true);
-        return notes.size() > 0 ? notes.get(0) : null;
+    public Category getById(Integer id) {
+        List<Category> categories = getAll("id", id, true);
+        return categories.size() > 0 ? categories.get(0) : null;
     }
 
-    public Note getByName(String name) {
-        List<Note> notes = getAll("name", name, true);
-        return notes.size() > 0 ? notes.get(0) : null;
+    public Category getByName(String name) {
+        List<Category> categories = getAll("name", name, true);
+        return categories.size() > 0 ? categories.get(0) : null;
     }
 
     // INSERT OR UPDATE
-    public Note save(Note genre) {
+    public Category save(Category genre) {
         Session session = HibernateConfig.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -43,7 +43,7 @@ public class CategoryService {
         return genre;
     }
 
-    public void delete(Note genre) {
+    public void delete(Category genre) {
         Session session = HibernateConfig.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -58,14 +58,14 @@ public class CategoryService {
         }
     }
 
-    public List<Note> getAll() {
+    public List<Category> getAll() {
         Session session = HibernateConfig.openSession();
         Transaction transaction = session.beginTransaction();
-        List<Note> notes = new ArrayList<>();
+        List<Category> categories = new ArrayList<>();
 
         try {
-            Query<Note> query = session.createQuery("FROM note", Note.class);
-            notes = query.getResultList();
+            Query<Category> query = session.createQuery("FROM note", Category.class);
+            categories = query.getResultList();
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,23 +74,25 @@ public class CategoryService {
             session.close();
         }
 
-        return notes;
+        return categories;
     }
 
-    private List<Note> getAll(String key, Object value, boolean limitOne) {
+    private List<Category> getAll(String key, Object value, boolean limitOne) {
         Session session = HibernateConfig.openSession();
         Transaction transaction = session.beginTransaction();
-        List<Note> notes = new ArrayList<>();
+        List<Category> categories = new ArrayList<>();
 
         try {
-            Query<Note> query = session.createQuery(String.format("FROM note WHERE %s = :%s", key, key), Note.class);
+            Query<Category> query = session.createQuery(
+                    String.format("FROM Category WHERE %s = :%s", key, key), Category.class
+            );
             query.setParameter(key, value);
 
             if (limitOne) {
                 query.setMaxResults(1);
             }
 
-            notes = query.getResultList();
+            categories = query.getResultList();
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,6 +101,6 @@ public class CategoryService {
             session.close();
         }
 
-        return notes;
+        return categories;
     }
 }

@@ -3,6 +3,8 @@ package lt.codeacademy;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lt.codeacademy.model.Category;
 import lt.codeacademy.model.Note;
+import lt.codeacademy.service.CategoryService;
+import lt.codeacademy.service.NoteService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,11 +15,13 @@ public class App
 
         HibernateConfig.buildSessionFactory();
 
-        Session session = HibernateConfig.openSession();
-        Category category = session.get(Category.class, 1);
+        NoteService noteService = new NoteService();
+        CategoryService categoryService = new CategoryService();
+
+        Category category = categoryService.getByName("work");
         Note note = new Note("tekst", category);
-        session.save(note);
-        session.close();
+
+        noteService.save(note);
 
         HibernateConfig.closeSessionFactory();
 
