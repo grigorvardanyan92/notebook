@@ -27,3 +27,5 @@ insert into category (name)
 values ('study');
 insert into category (name)
 values ('personal');
+insert into category (name)
+values ('home');

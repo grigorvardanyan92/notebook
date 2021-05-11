@@ -18,7 +18,7 @@ public class App
         NoteService noteService = new NoteService();
         CategoryService categoryService = new CategoryService();
 
-        Category category = categoryService.getByName("work");
+        Category category = categoryService.getByName("la");
         Note note = new Note("tekst", category);
 
         noteService.save(note);
