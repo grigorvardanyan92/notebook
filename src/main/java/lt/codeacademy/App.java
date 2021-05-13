@@ -2,7 +2,7 @@ package lt.codeacademy;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lt.codeacademy.exception.NoSuchCategoryExcepiton;
-import lt.codeacademy.util.NoteFactory;
+import lt.codeacademy.util.CategoryFactory;
 import lt.codeacademy.model.Category;
 import lt.codeacademy.model.Note;
 import lt.codeacademy.service.NoteService;
@@ -18,7 +18,7 @@ public class App
 
         Category category = null;
         try {
-            category = NoteFactory.getCategory("home");
+            category = CategoryFactory.getCategory("home");
             Note note = new Note("tekst", category);
 
             noteService.save(note);

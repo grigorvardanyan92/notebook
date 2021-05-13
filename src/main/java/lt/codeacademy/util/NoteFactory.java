@@ -7,14 +7,14 @@ import lt.codeacademy.service.CategoryService;
 
 public class NoteFactory {
 
-    public static Note getNote(String text, String categoryName) throws NoSuchCategoryExcepiton {
-        CategoryService categoryService = new CategoryService();
-        Category category = categoryService.getByName(categoryName);
+    public static Note getNote(String name, String categoryName) {
+        try {
+            Category category = CategoryFactory.getCategory(categoryName);
+            return new Note(name, category);
 
-        if (category == null) {
-            throw new NoSuchCategoryExcepiton();
+        } catch (NoSuchCategoryExcepiton e) {
+            System.out.println("no such category");
+            return null;
         }
-
-        return new Note(text, category);
     }
 }
