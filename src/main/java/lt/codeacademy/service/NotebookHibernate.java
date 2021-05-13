@@ -3,8 +3,6 @@ package lt.codeacademy.service;
 import lt.codeacademy.exception.NoSuchCategoryExcepiton;
 import lt.codeacademy.exception.NoSuchIDException;
 import lt.codeacademy.model.Note;
-import lt.codeacademy.service.CategoryService;
-import lt.codeacademy.service.NoteService;
 import lt.codeacademy.util.CategoryFactory;
 
 import java.util.ArrayList;

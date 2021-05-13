@@ -1,17 +1,17 @@
 package lt.codeacademy;
 
-import lt.codeacademy.exception.NoSuchIDException;
 import lt.codeacademy.model.Note;
 import lt.codeacademy.service.NotebookHibernate;
 
 import java.util.stream.Collectors;
 
-/*
-* Class that returns Notebook values in more readable String format
-* */
+/**
+ * Class that returns Notebook values in more readable String format
+ */
 public class NotebookInterface {
+
     private NotebookHibernate notebook;
-    private final String LIST_HEADER = "  ID   NOTE                                       DATE\n";
+    private final String LIST_HEADER = "  ID   NOTE\n";
 
     // constructor
     public NotebookInterface(NotebookHibernate notebook) {
@@ -19,30 +19,35 @@ public class NotebookInterface {
     }
 
     public String uncompletedNotes() {
+        System.out.println("\nUncompleted notes:");
         return LIST_HEADER + notebook.getUncompletedNotes().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining("\n"));
     }
 
     public String personalNotes() {
+        System.out.println("\nPersonal notes:");
         return LIST_HEADER + notebook.getPersonalNotes().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining("\n"));
     }
 
     public String studiesNotes() {
+        System.out.println("\nStudies notes:");
         return LIST_HEADER + notebook.getStudiesNotes().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining("\n"));
     }
 
     public String workNotes() {
+        System.out.println("\nWork notes:");
         return LIST_HEADER + notebook.getWorkNotes().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining("\n"));
     }
 
     public String completedNotes() {
+        System.out.println("\ncompleted notes:");
         return LIST_HEADER + notebook.getCompletedNotes().stream()
                 .map(Object::toString)
                 .collect(Collectors.joining("\n"));

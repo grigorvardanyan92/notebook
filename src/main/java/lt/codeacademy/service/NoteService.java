@@ -1,11 +1,12 @@
 package lt.codeacademy.service;
 
 import lt.codeacademy.exception.NoSuchIDException;
-import lt.codeacademy.util.HibernateConfig;
 import lt.codeacademy.model.Note;
+import lt.codeacademy.util.HibernateConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+
 import java.util.ArrayList;
 import java.util.List;
 

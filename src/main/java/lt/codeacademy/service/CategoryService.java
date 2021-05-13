@@ -1,7 +1,7 @@
 package lt.codeacademy.service;
 
-import lt.codeacademy.util.HibernateConfig;
 import lt.codeacademy.model.Category;
+import lt.codeacademy.util.HibernateConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
