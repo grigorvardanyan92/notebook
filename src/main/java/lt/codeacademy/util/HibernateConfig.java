@@ -1,4 +1,4 @@
-package lt.codeacademy;
+package lt.codeacademy.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -1,13 +1,12 @@
 package lt.codeacademy;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import lt.codeacademy.exception.NoSuchCategoryExcepiton;
+import lt.codeacademy.util.NoteFactory;
 import lt.codeacademy.model.Category;
 import lt.codeacademy.model.Note;
-import lt.codeacademy.service.CategoryService;
 import lt.codeacademy.service.NoteService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import lt.codeacademy.util.HibernateConfig;
 
 public class App
 {
@@ -16,12 +15,17 @@ public class App
         HibernateConfig.buildSessionFactory();
 
         NoteService noteService = new NoteService();
-        CategoryService categoryService = new CategoryService();
 
-        Category category = categoryService.getByName("la");
-        Note note = new Note("tekst", category);
+        Category category = null;
+        try {
+            category = NoteFactory.getCategory("home");
+            Note note = new Note("tekst", category);
 
-        noteService.save(note);
+            noteService.save(note);
+
+        } catch (NoSuchCategoryExcepiton noSuchCategoryExcepiton) {
+            noSuchCategoryExcepiton.printStackTrace();
+        }
 
         HibernateConfig.closeSessionFactory();
 

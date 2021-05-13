@@ -2,7 +2,6 @@ package lt.codeacademy;
 
 import lt.codeacademy.exception.NoSuchIDException;
 import lt.codeacademy.model.Note;
-import lt.codeacademy.model.Notebook;
 
 import java.util.stream.Collectors;
 

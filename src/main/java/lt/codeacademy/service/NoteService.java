@@ -1,6 +1,6 @@
 package lt.codeacademy.service;
 
-import lt.codeacademy.HibernateConfig;
+import lt.codeacademy.util.HibernateConfig;
 import lt.codeacademy.model.Note;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
