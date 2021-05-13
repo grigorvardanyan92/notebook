@@ -1,12 +1,11 @@
 package lt.codeacademy;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import lt.codeacademy.exception.NoSuchCategoryExcepiton;
-import lt.codeacademy.util.CategoryFactory;
-import lt.codeacademy.model.Category;
+import lt.codeacademy.service.NotebookHibernate;
 import lt.codeacademy.model.Note;
-import lt.codeacademy.service.NoteService;
 import lt.codeacademy.util.HibernateConfig;
+
+import java.util.List;
 
 public class App
 {
@@ -14,17 +13,11 @@ public class App
 
         HibernateConfig.buildSessionFactory();
 
-        NoteService noteService = new NoteService();
+        NotebookHibernate notebook = new NotebookHibernate();
+        List<Note> notes = notebook.getWorkNotes();
 
-        Category category = null;
-        try {
-            category = CategoryFactory.getCategory("home");
-            Note note = new Note("tekst", category);
-
-            noteService.save(note);
-
-        } catch (NoSuchCategoryExcepiton noSuchCategoryExcepiton) {
-            noSuchCategoryExcepiton.printStackTrace();
+        for (Note note : notes) {
+            System.out.println(note);
         }
 
         HibernateConfig.closeSessionFactory();

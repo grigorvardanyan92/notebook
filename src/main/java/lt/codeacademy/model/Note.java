@@ -71,6 +71,6 @@ public class Note {
         if (beginningOfText.length() > 37) {
             beginningOfText = beginningOfText.substring(0, 37) + "...";
         }
-        return String.format("%4d   %-40s   %s", id, beginningOfText);
+        return String.format("%4d   %-40s", id, beginningOfText);
     }
 }

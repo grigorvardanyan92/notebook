@@ -2,6 +2,7 @@ package lt.codeacademy;
 
 import lt.codeacademy.exception.NoSuchIDException;
 import lt.codeacademy.model.Note;
+import lt.codeacademy.service.NotebookHibernate;
 
 import java.util.stream.Collectors;
 
@@ -9,20 +10,12 @@ import java.util.stream.Collectors;
 * Class that returns Notebook values in more readable String format
 * */
 public class NotebookInterface {
-    private Notebook notebook;
+    private NotebookHibernate notebook;
     private final String LIST_HEADER = "  ID   NOTE                                       DATE\n";
 
     // constructor
-    public NotebookInterface(Notebook notebook) {
+    public NotebookInterface(NotebookHibernate notebook) {
         this.notebook = notebook;
-    }
-
-    public void deleteNote(int id) {
-        try {
-            notebook.deleteNote(id);
-        } catch (NoSuchIDException e) {
-            System.out.println("no such id");
-        }
     }
 
     public String uncompletedNotes() {

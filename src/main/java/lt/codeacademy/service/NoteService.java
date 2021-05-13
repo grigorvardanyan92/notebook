@@ -1,5 +1,6 @@
 package lt.codeacademy.service;
 
+import lt.codeacademy.exception.NoSuchIDException;
 import lt.codeacademy.util.HibernateConfig;
 import lt.codeacademy.model.Note;
 import org.hibernate.Session;
@@ -10,9 +11,14 @@ import java.util.List;
 
 public class NoteService {
 
-    public Note getById(Integer id) {
+    public Note getById(Integer id) throws NoSuchIDException {
         List<Note> notes = getAll("id", id, true);
-        return notes.size() > 0 ? notes.get(0) : null;
+
+        if (notes.size() == 0) {
+            throw new NoSuchIDException();
+        }
+
+        return notes.get(0);
     }
 
     // INSERT OR UPDATE
@@ -55,7 +61,7 @@ public class NoteService {
         List<Note> notes = new ArrayList<>();
 
         try {
-            Query<Note> query = session.createQuery("FROM note", Note.class);
+            Query<Note> query = session.createQuery("FROM Note WHERE deleted = false", Note.class);
             notes = query.getResultList();
             transaction.commit();
         } catch (Exception e) {
@@ -69,14 +75,14 @@ public class NoteService {
     }
 
     // HQL example
-    private List<Note> getAll(String col, Object val, boolean limitOne) {
+    public List<Note> getAll(String col, Object val, boolean limitOne) {
         Session session = HibernateConfig.openSession();
         Transaction transaction = session.beginTransaction();
         List<Note> notes = new ArrayList<>();
 
         try {
             Query<Note> query = session.createQuery(String.format(
-                    "FROM Note WHERE %s = :%s", col, col), Note.class
+                    "FROM Note WHERE %s = :%s AND deleted = false", col, col), Note.class
             );
             query.setParameter(col, val);
 
