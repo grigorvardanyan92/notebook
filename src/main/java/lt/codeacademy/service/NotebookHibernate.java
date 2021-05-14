@@ -2,8 +2,8 @@ package lt.codeacademy.service;
 
 import lt.codeacademy.exception.NoSuchCategoryExcepiton;
 import lt.codeacademy.exception.NoSuchIDException;
+import lt.codeacademy.factory.CategoryFactory;
 import lt.codeacademy.model.Note;
-import lt.codeacademy.util.CategoryFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,8 @@ public class NotebookHibernate {
         noteService = new NoteService();
     }
 
-    public void saveNote(Note note) {
-        noteService.save(note);
+    public Note saveNote(Note note) {
+        return noteService.save(note);
     }
 
     public Note getNote(int id) {

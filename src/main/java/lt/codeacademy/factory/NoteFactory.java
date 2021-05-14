@@ -1,4 +1,4 @@
-package lt.codeacademy.util;
+package lt.codeacademy.factory;
 
 import lt.codeacademy.exception.NoSuchCategoryExcepiton;
 import lt.codeacademy.model.Category;

@@ -1,9 +1,8 @@
 package lt.codeacademy;
 
-import lt.codeacademy.model.Note;
+import lt.codeacademy.factory.NoteFactory;
 import lt.codeacademy.service.NotebookHibernate;
 import lt.codeacademy.util.HibernateConfig;
-import lt.codeacademy.util.NoteFactory;
 
 public class App
 {
@@ -15,14 +14,10 @@ public class App
         NotebookInterface notebookInterface = new NotebookInterface(notebook);
 
         // adding notes
-        Note note1 = NoteFactory.getNote("for setting completed", "work");
-        Note note2 = NoteFactory.getNote("for changing text", "home");
-        Note note3 = NoteFactory.getNote("for deleting", "personal");
-        Note note4 = NoteFactory.getNote("just example", "personal");
-        notebook.saveNote(note1);
-        notebook.saveNote(note2);
-        notebook.saveNote(note3);
-        notebook.saveNote(note4);
+        notebook.saveNote(NoteFactory.getNote("for setting completed", "work"));
+        notebook.saveNote(NoteFactory.getNote("for changing text", "home"));
+        notebook.saveNote(NoteFactory.getNote("for deleting", "personal"));
+        notebook.saveNote(NoteFactory.getNote("just example", "personal"));
 
         // mark note as completed
         notebook.setNoteCompleted(1, true);
@@ -38,7 +33,5 @@ public class App
         System.out.println(notebookInterface.personalNotes());
 
         HibernateConfig.closeSessionFactory();
-
-
     }
 }
